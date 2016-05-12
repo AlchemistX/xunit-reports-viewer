@@ -91,6 +91,13 @@
               <td>{{name}}</td>
               <td>{{time}}s.</td>
             </tr>
+            {{#if system_out}}
+                <tr class="{{type}}">
+                  <td colspan="2">
+                    <pre style="white-space: pre-wrap;">{{system_out}}</pre>
+                  </td>
+                </tr>
+            {{/if}}
             {{#if failure}}
                 <tr class="{{type}}">
                   <td colspan="2">

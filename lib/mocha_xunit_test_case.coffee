@@ -19,6 +19,13 @@ class MochaXUnitTestCase
       @failure = @failure.trim()
       @failure = new Handlebars.SafeString @failure
 
+    @system_out = null
+    if testCase['system-out']
+      system_out = testCase['system-out']
+      @system_out = entities.decodeHTML system_out[0]
+      @system_out = @system_out.trim()
+      @system_out = new Handlebars.SafeString @system_out
+
     if @skipped then @type = 'info'
     else if @failure != null then @type = 'danger'
     else @type = 'success'
