@@ -92,18 +92,27 @@
               <td>{{time}}s.</td>
             </tr>
             {{#if system_out}}
-                <tr class="{{type}}">
-                  <td colspan="2">
+            <tr class="info">
+              <td colspan="2">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{system_out_id}}">
+                    Console output <b>{{className}}</b> with <b>{{name}}</b>
+                  </a>
+                </div>
+                <div id="{{system_out_id}}" class="accordion-body collapse">
+                  <div class="accordion-toggle">
                     <pre style="white-space: pre-wrap;">{{system_out}}</pre>
-                  </td>
-                </tr>
+                  </div>
+                </div>
+              </td>
+            </tr>
             {{/if}}
             {{#if failure}}
-                <tr class="{{type}}">
-                  <td colspan="2">
-                    <pre>{{failure}}</pre>
-                  </td>
-                </tr>
+            <tr class="{{type}}">
+              <td colspan="2">
+                <pre>{{failure}}</pre>
+              </td>
+            </tr>
             {{/if}}
           {{/each}}
         </table>
