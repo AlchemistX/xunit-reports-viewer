@@ -26,6 +26,7 @@ class MochaXUnitTestSuite
     for className in @classes
       @pockets[className] =
         name: className
+        id: className.replace /\./g, "_"
         tests: []
 
       for test in @tests

@@ -79,44 +79,45 @@
       </div>
     {{/if}}
 
+    <div class="btn-group-vertical" style="width: 100%">
     {{#each pockets}}
-        <h4>{{name}}</h4>
-        <table class="table">
-          <tr>
-            <th>Name</th>
-            <th style="width: 200px;">Time</th>
-          </tr>
-          {{#each tests}}
-            <tr class="{{type}}">
-              <td>{{name}}</td>
-              <td>{{time}}s.</td>
-            </tr>
-            {{#if system_out}}
-            <tr class="info">
-              <td colspan="2">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{system_out_id}}">
-                    Console output <b>{{className}}</b> with <b>{{name}}</b>
-                  </a>
-                </div>
-                <div id="{{system_out_id}}" class="accordion-body collapse">
-                  <div class="accordion-toggle">
-                    <pre style="white-space: pre-wrap;">{{system_out}}</pre>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            {{/if}}
-            {{#if failure}}
-            <tr class="{{type}}">
-              <td colspan="2">
-                <pre>{{failure}}</pre>
-              </td>
-            </tr>
-            {{/if}}
-          {{/each}}
-        </table>
+        <div class="accordion-heading">
+          <button class="btn btn-default accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{id}}" style="width: 100%;text-align: left;">
+          <b>{{tests.length}}</b> cases with <b>[{{name}}]</b>
+          </button>
+        </div>
+        <div id="{{id}}" class="accordion-body collapse">
+          <div class="accordion-toggle">
+            <table class="table">
+              <tr>
+                <th>Name</th>
+                <th style="width: 50px;">Time</th>
+              </tr>
+              {{#each tests}}
+                <tr class="{{type}}">
+                  <td>
+                  {{name}}
+                  {{#if system_out}}
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{system_out_id}}">
+                          <b>Console output</b>
+                        </a>
+                      </div>
+                      <div id="{{system_out_id}}" class="accordion-body collapse">
+                        <div class="accordion-toggle">
+                          <pre style="white-space: pre-wrap;">{{system_out}}</pre>
+                        </div>
+                      </div>
+                  {{/if}}
+                  </td>
+                  <td>{{time}}s.</td>
+                </tr>
+              {{/each}}
+            </table>
+          </div>
+        </div>
     {{/each}}
+    </div>
   {{/each}}
 </div>
 
