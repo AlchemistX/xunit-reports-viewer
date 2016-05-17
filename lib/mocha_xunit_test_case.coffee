@@ -25,8 +25,8 @@ class MochaXUnitTestCase
       @system_out = entities.decodeHTML system_out[0]
       @system_out = @system_out.trim()
       @system_out = new Handlebars.SafeString @system_out
-      @system_out_id = @className.replace /\./g, "_"
-      @system_out_id += "-" + @name
+      @system_out_id = @className + "_" + @name
+      @system_out_id = @system_out_id.replace /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\" ]/gi, "_"
 
     if @skipped then @type = 'info'
     else if @failure != null then @type = 'danger'
